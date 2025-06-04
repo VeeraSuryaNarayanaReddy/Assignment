@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  yii2-app:
+    image: yourdockerhub/yii2-app:latest   # Replace with your Docker Hub repo
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    ports:
+      - target: 80
+        published: 8080  # NGINX will reverse proxy to this
+        protocol: tcp
+        mode: host
+    volumes:
+      - yii2-app-data:/app
+    networks:
+      - yii2-net
+
+volumes:
+  yii2-app-data:
+
+networks:
+  yii2-net:
+    driver: overlay
