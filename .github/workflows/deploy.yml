@@ -38,4 +38,4 @@ jobs:
             cd /app
             git pull
             docker pull  ${{ secrets.DOCKERHUB_USERNAME }}/yii2-app:latest
-            docker stack deploy -c docker-stack.yml yiiapp
+            docker stack deploy -c app/docker-stack.yml yiiapp
