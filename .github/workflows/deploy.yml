@@ -42,6 +42,6 @@ jobs:
             fi
 
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/yii2-app:latest
-            docker stack deploy -c /home/ubuntu/app/docker-stack.yml yiiapp
+            docker stack deploy -c /home/ubuntu/app/app/docker-stack.yml yiiapp
 
 
