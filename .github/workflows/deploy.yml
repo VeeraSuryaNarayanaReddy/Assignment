@@ -35,12 +35,13 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            if [ ! -d /app/.git ]; then
-              git clone https://github.com/VeeraSuryaNarayanaReddy/Assignment.git /app
+            if [ ! -d /home/ubuntu/app/.git ]; then
+              git clone https://github.com/VeeraSuryaNarayanaReddy/Assignment.git /home/ubuntu/app
             else
-              cd /app && git pull
+              cd /home/ubuntu/app && git pull
             fi
 
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/yii2-app:latest
-            docker stack deploy -c /app/docker-stack.yml yiiapp
+            docker stack deploy -c /home/ubuntu/app/docker-stack.yml yiiapp
+
 
