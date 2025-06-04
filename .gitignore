@@ -1,0 +1,35 @@
+# PhpStorm project files
+app/.idea/
+
+# NetBeans project files
+app/nbproject/
+
+# Zend Studio for Eclipse project files
+app/.buildpath
+app/.project
+app/.settings/
+
+# Windows thumbnail cache
+app/Thumbs.db
+
+# Composer vendor directory
+app/vendor/
+
+# Composer itself is not needed
+app/composer.phar
+
+# macOS Finder metadata
+app/.DS_Store
+
+# PHPUnit itself is not needed
+app/phpunit.phar
+
+# Local PHPUnit config
+app/phpunit.xml
+
+# PHPUnit test output
+app/tests/_output/*
+app/tests/_support/_generated/
+
+# Vagrant folder
+app/.vagrant/

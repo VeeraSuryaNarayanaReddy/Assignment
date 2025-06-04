@@ -1,0 +1,29 @@
+- name: Install Docker
+  apt:
+    name: docker.io
+    state: present
+    update_cache: yes
+
+- name: Start Docker service
+  systemd:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: Initialize Swarm
+  shell: docker swarm init
+  ignore_errors: true
+
+- name: Create app directory
+  file:
+    path: /app
+    state: directory
+
+- name: Copy app files (assume app is copied via Git or pre-uploaded)
+  copy:
+    src: ../../app/
+    dest: /app/
+    remote_src: yes
+
+- name: Deploy Yii2 app stack
+  shell: docker stack deploy -c /app/docker-stack.yml yiiapp
