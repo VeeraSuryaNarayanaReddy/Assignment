@@ -1,5 +1,45 @@
-- hosts: ec2
+---
+- name: Setup Yii2 Hosting Environment on EC2
+  hosts: ec2
   become: true
-  roles:
-    - docker
-    - nginx
+
+  tasks:
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+
+    - name: Install Docker
+      apt:
+        name: docker.io
+        state: present
+
+    - name: Start Docker service
+      systemd:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Initialize Docker Swarm (ignore if already done)
+      shell: docker swarm init
+      ignore_errors: true
+
+    - name: Create /app directory
+      file:
+        path: /app
+        state: directory
+        mode: '0755'
+
+    - name: Install NGINX
+      apt:
+        name: nginx
+        state: present
+
+    - name: Copy NGINX reverse proxy config
+      copy:
+        src: yii.conf
+        dest: /etc/nginx/conf.d/yii.conf
+
+    - name: Restart NGINX
+      systemd:
+        name: nginx
+        state: restarted

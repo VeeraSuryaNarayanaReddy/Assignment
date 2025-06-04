@@ -26,7 +26,7 @@ jobs:
         with:
           context: ./app
           push: true
-          tags: your-dockerhub-username/yii2-app:latest
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/yii2-app:latest
 
       - name: SSH and Deploy to EC2
         uses: appleboy/ssh-action@master
@@ -37,5 +37,5 @@ jobs:
           script: |
             cd /app
             git pull
-            docker pull your-dockerhub-username/yii2-app:latest
+            docker pull  ${{ secrets.DOCKERHUB_USERNAME }}/yii2-app:latest
             docker stack deploy -c docker-stack.yml yiiapp

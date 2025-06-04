@@ -33,3 +33,5 @@ app/tests/_support/_generated/
 
 # Vagrant folder
 app/.vagrant/
+
+devops.pem
