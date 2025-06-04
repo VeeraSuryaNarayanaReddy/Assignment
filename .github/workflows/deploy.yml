@@ -35,7 +35,12 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd /app
-            git pull
-            docker pull  ${{ secrets.DOCKERHUB_USERNAME }}/yii2-app:latest
-            docker stack deploy -c app/docker-stack.yml yiiapp
+            if [ ! -d /app/.git ]; then
+              git clone https://github.com/yourusername/yourrepo.git /app
+            else
+              cd /app && git pull
+            fi
+
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/yii2-app:latest
+            docker stack deploy -c /app/docker-stack.yml yiiapp
+
