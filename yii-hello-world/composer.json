@@ -1,0 +1,20 @@
+{
+  "name": "example/yii2-hello",
+  "description": "A simple Hello World Yii2 app",
+  "type": "project",
+  "require": {
+    "php": ">=7.4.0",
+    "yiisoft/yii2": "~2.0.45"
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "yii\\composer\\Installer::postInstall"
+    ]
+  },
+  "config": {
+    "process-timeout": 1800,
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true
+    }
+  }
+}

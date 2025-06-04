@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  yii2-hello:
+    image: yii2-hello-world:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+    ports:
+      - target: 80
+        published: 8080
+        protocol: tcp
+        mode: host
+    networks:
+      - yii2-net
+
+networks:
+  yii2-net:
+    driver: overlay
