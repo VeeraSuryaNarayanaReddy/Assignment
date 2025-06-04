@@ -24,7 +24,7 @@ jobs:
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v5
         with:
-          context: ./Assignment/app
+          context: ./app
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/yii2-app:latest
 
