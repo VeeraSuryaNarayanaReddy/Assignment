@@ -3,16 +3,16 @@ FROM yiisoftware/yii2-php:7.4-apache
 # Set working directory
 WORKDIR /app
 
-# Copy composer files and install dev dependencies
+# Copy composer files first
 COPY composer.json composer.lock ./
 
-# Install PHP dependencies including dev tools like yii2-debug
-RUN composer install --no-interaction --prefer-dist
+# Install dependencies including dev packages (important!)
+RUN composer install --no-interaction --prefer-dist --dev
 
-# Copy rest of the application code
+# Copy remaining source code
 COPY . .
 
-# Permissions (optional)
+# Set permissions
 RUN chown -R www-data:www-data /app && chmod -R 755 /app
 
 # Expose Apache port
