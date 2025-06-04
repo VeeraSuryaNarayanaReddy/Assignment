@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   yii2-hello:
-    image: yii2-hello-world:latest
+    image: suryanarayana18/yii2-app:latest
     build:
       context: .
       dockerfile: Dockerfile
