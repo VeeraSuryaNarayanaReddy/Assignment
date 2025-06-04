@@ -6,8 +6,8 @@ WORKDIR /app
 # Copy only composer files first (for layer caching)
 COPY composer.json composer.lock ./
 
-# Install PHP dependencies (without dev packages)
-RUN composer install --no-dev --optimize-autoloader
+# Install PHP dependencies
+RUN composer install
 
 # Copy rest of the app source code
 COPY . .
