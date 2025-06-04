@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   yii2-app:
-    image: yourdockerhub/yii2-app:latest   # Replace with your Docker Hub repo
+    image: suryanarayana18/yii2-app:latest   # Replace with your Docker Hub repo
     deploy:
       replicas: 1
       restart_policy:
