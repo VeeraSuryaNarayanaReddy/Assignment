@@ -24,7 +24,7 @@ jobs:
       - name: Build and Push Docker Image
         uses: docker/build-push-action@v5
         with:
-          context: ./app
+          context: ./Assignment/app
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/yii2-app:latest
 
@@ -43,5 +43,4 @@ jobs:
 
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/yii2-app:latest
             docker stack deploy -c /home/ubuntu/app/app/docker-stack.yml yiiapp
-
 
