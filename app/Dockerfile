@@ -9,6 +9,7 @@ COPY composer.json composer.lock ./
 # Install dependencies including dev packages (important!)
 RUN composer install --no-interaction --prefer-dist --dev
 
+
 # Copy remaining source code
 COPY . .
 
