@@ -14,7 +14,8 @@ RUN composer install --no-interaction --prefer-dist
 COPY . .
 
 # Set permissions
-RUN chown -R www-data:www-data /app && chmod -R 755 /app
+RUN composer install --no-interaction --prefer-dist \
+ && ls -la vendor/yiisoft/yii2-debug
 
 # Expose Apache port
 EXPOSE 80
